@@ -1654,7 +1654,8 @@ def get_rb_table(request, id=0):
         all_data['Page1']['savedConnectionItems'] = json.loads(json.dumps(connection_serializer.data))[0] if len(connection_serializer.data) == 1 else json.loads(json.dumps(connection_serializer.data))
         if definition_data['query_type'] == False:
             table_obj = query_builder_table.objects.filter(delete_flag="N", query_id=definition_data['id']).values('id','table_name','table_id')
-            all_data['Page2'] = table_obj[0] if len(table_obj) == 1 else table_obj
+            all_data['Page2'] = table_obj
+            # all_data['Page2'] = table_obj[0] if len(table_obj) == 1 else table_obj
             all_data['Page3'] = []
             all_data['Page4'] = {}
             all_data['Page5'] = []
